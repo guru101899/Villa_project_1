@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Accounts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            /* Added to prevent padding from affecting width */
+        }
+
+       input:hover {
+    background-color: salmon;
+      }
+
+
+      input:focus {
+    
+    border-color:red; /* Change to a different background color when focused */
+    outline: none; /* Remove default outline */
+    background-color: white;
+     }
+
+
+
+
+
+        input[type="submit"] {
+            background-color: #1c67bd; 
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            /* transition: background-color 0.3s ease; */
+            /* Smooth transition for hover effect */
+        }
+
+        input[type="submit"]:hover {
+            background-color:  seagreen;
+            /* Darker green on hover */
+        }
+
+        .message {
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Register Here</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="firstname" placeholder="Enter First Name" required><br>
+
+        <input type="text" name="lastname" placeholder="Enter Last Name" required><br>
+
+        <input type="email" name="email" placeholder="Enter Email" required><br>
+
+        <input type="text" name="username" placeholder="Enter Username" required><br>
+
+        <input type="password" name="password" placeholder="Enter Password" required><br>
+
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+
+        <input type="submit" value="Register">
+
+        <div class="message">
+            <h2>
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </h2>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

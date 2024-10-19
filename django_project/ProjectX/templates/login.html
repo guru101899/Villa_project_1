@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Your Accounts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            /* Set a fixed width */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 92%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s, background-color 0.3s;
+            /* Smooth transitions */
+        }
+
+        input[type="text"]:hover,
+        input[type="password"]:hover {
+            border-color: #66afe9;
+            /* Change border color on hover */
+            background-color: #e6f7ff;
+            /* Light blue background on hover */
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #66afe9;
+            /* Change border color on focus */
+            outline: none;
+            /* Remove default outline */
+            background-color: #f0faff;
+            /* Light background on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #1c67bd;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #155a8a;
+            /* Darker blue on hover */
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #d9534f;
+            /* Red for error messages */
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Login Here</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter your username" required> <br>
+            <input type="password" name="password" placeholder="Enter your password" required><br>
+            <input type="submit" value="Login">
+        </form>
+        <div class="message">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html> 
